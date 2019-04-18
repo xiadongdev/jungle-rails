@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
   end
   helper_method :cart_subtotal_cents
 
-
   def update_cart(new_cart)
     cookies[:cart] = {
       value: JSON.generate(new_cart),
@@ -33,5 +32,15 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
+
+  def order_items
+    @order_items ||= LineItem.where(order_id: params[:id]).map{|p| {product: Product.find_by(id: p.product_id), quantity: p.quantity}}
+  end
+  helper_method :order_items
+
+  def order_total
+    @order_total ||= Order.find(params[:id]).total_cents
+  end
+  helper_method :order_total
 
 end
