@@ -43,4 +43,9 @@ class ApplicationController < ActionController::Base
   end
   helper_method :order_total
 
+  def product_reviews
+    @product_reviews ||= Review.where(product_id: params[:id]).map{|r| {user: User.find(r.user_id).name, description: r.description, rating: r.rating}}
+  end
+  helper_method :product_reviews
+
 end
