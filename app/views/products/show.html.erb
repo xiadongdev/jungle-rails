@@ -21,17 +21,31 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+        </dl>
+      </div>
+
+      <div class="col-sm-8">
+        <dl class="dl-horizontal">
           <dt>Reviews</dt>
-          
-            <% product_reviews.each do |review| %>
-              <dd>
-              <%= review[:description]%>
-              *****Rating: <%= review[:rating]%>*****
-              By <%= review[:user]%>
-              <br/>
-              </dd>
-            <% end %>
-          
+            
+          <% product_reviews.each do |review| %>
+            <dd>
+            <%= review[:description]%>
+            *****Rating: <%= review[:rating]%>*****
+            By <%= review[:user]%>
+            <br/>
+            </dd>
+          <% end %>
+        </dl>
+      </div>
+
+      <div class="col-sm-8">
+        <dl class="dl-horizontal">
+          <%= form_for :review, url: "/products/#{params[:id]}/reviews" do |f| %>
+            Description: <%= f.text_field :description %>
+            <%= f.select :rating, options_for_select([["Rating", ""], 1, 2, 3, 4, 5]) %>
+            <%= f.submit 'Submit' %>
+          <% end %>
         </dl>
       </div>
 
