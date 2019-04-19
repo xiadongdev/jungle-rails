@@ -5,6 +5,8 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     if @review.save
       redirect_to @product
+    else
+      render @product
     end
   end
 

@@ -13,6 +13,7 @@
       </div>
       <div class="col-sm-8">
         <dl class="dl-horizontal">
+        <h3>Product Description</h3>
           <dt>Name</dt>
           <dd><%= @product.name %></dd>
           <dt>Description</dt>
@@ -23,27 +24,27 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
+      <hr style="border: 1px solid lightgray;" />
 
       <div class="col-sm-8">
         <dl class="dl-horizontal">
-          <dt>Reviews</dt>
-            
+        <h3>Product Reviews</h3>
           <% product_reviews.each do |review| %>
-            <dd>
-            <%= review[:description]%>
-            *****Rating: <%= review[:rating]%>*****
-            By <%= review[:user]%>
+            <dt>Rating: <%= review[:rating]%></dt>
+            <dd><%= review[:description]%> --- By <%= review[:user]%></dd>
             <br/>
-            </dd>
           <% end %>
         </dl>
       </div>
 
       <div class="col-sm-8">
         <dl class="dl-horizontal">
+
           <%= form_for :review, url: "/products/#{params[:id]}/reviews" do |f| %>
-            Description: <%= f.text_field :description %>
-            <%= f.select :rating, options_for_select([["Rating", ""], 1, 2, 3, 4, 5]) %>
+            <dt>Description: </dt> 
+            <dd><%= f.text_area :description %></dd>
+            <dt>Rating:</dt>
+            <dd><%= f.select :rating, options_for_select([["Rating", ""], 1, 2, 3, 4, 5]) %><dd> <br/>
             <%= f.submit 'Submit' %>
           <% end %>
         </dl>
