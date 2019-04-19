@@ -2,7 +2,10 @@
 
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
-    Order Made with Account: <%= current_user.email%>
+    <div class="order-summary jumbotron">
+    <h4>Thank you for your order! An email confirmation has been sent to <%= current_user.email%></h4>
+  </div>
+   
   </header>
 
   <div class="panel panel-default items">
