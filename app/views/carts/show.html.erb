@@ -4,8 +4,12 @@
     <h1>My Cart</h1>
   </header>
 
+  <% if enhanced_cart.count < 1 %>
+  <h3>Your cart is currently empty.</h3><br/>
+  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+  <% else %>
   <div class="panel panel-default items">
-    <table class="table table-bordered">
+    <table class="table table-bordered">  
       <thead>
         <tr>
           <th colspan="2">Product</th>
@@ -13,7 +17,7 @@
           <th>Quantity</th>
           <th>Price</th>
         </tr>
-      </thead>
+      </thead>      
       <tbody>
         <% enhanced_cart.each do |item| %>
           <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
@@ -31,6 +35,7 @@
       </tfoot>
     </table>
   </div>
+  
 
   <div class="row">
     <div class="col-xs-12">
@@ -48,5 +53,6 @@
       <% end %>
     </div>
   </div>
+  <% end %>
 
 </section>
