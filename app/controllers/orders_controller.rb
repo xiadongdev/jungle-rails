@@ -54,7 +54,9 @@ class OrdersController < ApplicationController
         item_price: product.price,
         total_price: product.price * quantity
       )
+      # Product.find_by(product.id).update(quantity: entry[:quantity])
     end
+
     order.save!
     order
   end

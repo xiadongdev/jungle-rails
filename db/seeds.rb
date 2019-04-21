@@ -128,7 +128,7 @@ cat3.products.create!({
   name:  'Red Bookshelf',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture3.jpg'),
-  quantity: 0,
+  quantity: 6,
   price: 2_483.75
 })
 
@@ -157,25 +157,25 @@ User.create!({
 Product.first.reviews.create! ({
   user_id: 1,
   description: 'love it!',
-  rating: 10
+  rating: 5
 })
 
 Product.first.reviews.create! ({
   user_id: 2,
   description: 'good',
-  rating: 8
+  rating: 4
 })
 
 Product.third.reviews.create! ({
   user_id: 1,
   description: 'too expensive',
-  rating: 6
+  rating: 3
 })
 
 Product.last.reviews.create! ({
   user_id: 3,
   description: 'hate it',
-  rating: 0
+  rating: 1
 })
 
 puts "DONE!"
