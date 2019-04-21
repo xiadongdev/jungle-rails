@@ -3,8 +3,9 @@
 A mini Amazon clone application built with Rails 4.2.
 
 ## Final Project
-!["Screenshot of URLs page"](https://github.com/xiadongdev/chatty/blob/master/docs/conversation%20and%20renaming.png?raw=true)
-!["Screenshot of URLs page"](https://github.com/xiadongdev/chatty/blob/master/docs/sending%20images.png?raw=true)
+!["Screenshot of URLs page"](https://github.com/xiadongdev/jungle-rails/blob/master/docs/home.png?raw=true)
+!["Screenshot of URLs page"](https://github.com/xiadongdev/jungle-rails/blob/master/docs/product%20detail.png?raw=true)
+!["Screenshot of URLs page"](https://github.com/xiadongdev/jungle-rails/blob/master/docs/order%20detail.png?raw=true)
 
 ## Getting Started
 
@@ -19,3 +20,8 @@ A mini Amazon clone application built with Rails 4.2.
 * Rails 4.2
 * PostgreSQL 9.x
 * Stripe
+
+## TODO
+
+* Update product quantity after placing an order
+* Allow users to delete their own reviews
