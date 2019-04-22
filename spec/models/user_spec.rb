@@ -52,4 +52,26 @@ RSpec.describe User, type: :model do
     end
     
   end
+
+  describe '.authenticate_with_credentials' do
+    it 'should return the user if email matches the password' do
+      user = User.authenticate_with_credentials('a@a.com', 'a')
+      expect(user).to eql(User.find_by_email('a@a.com'))
+    end
+
+    it 'should return nil if email doesn not match the password' do
+      user = User.authenticate_with_credentials('a@a.com', 'r')
+      expect(user).to eql(nil)
+    end
+
+    it 'should return the user if email matches the password, does not matter with spaces around the email' do
+      user = User.authenticate_with_credentials('   a@a.cOm ', 'a')
+      expect(user).to eql(User.find_by_email('a@a.com'))
+    end
+
+    it 'should return the user if email matches the password, not case sensitive for the email' do
+      user = User.authenticate_with_credentials('A@A.cOm', 'a')
+      expect(user).to eql(User.find_by_email('a@a.com'))
+    end
+  end
 end
