@@ -5,8 +5,8 @@ RSpec.describe User, type: :model do
     @user = User.new(
       name: 'Ruby',
       email: 'r@r.com',
-      password: 'r',
-      password_confirmation: 'r'
+      password: 'rrrrrr',
+      password_confirmation: 'rrrrrr'
     )
   end
 
@@ -39,6 +39,16 @@ RSpec.describe User, type: :model do
       @user.save
       another_user = User.create(name: 'Sam', email: 'R@r.cOM', password: 's', password_confirmation: 's')
       expect(another_user).to_not be_valid
+    end
+
+    it 'is not valid if the length of password is less than 6' do
+      @user.password = 'hhh'
+      expect(@user).to_not be_valid
+    end
+    
+    it 'is not valid if the length of password is greater than 20' do
+      @user.password = 'hhhjfdklsajfdklsafjkdlsafjkdsljafkdlsakldsajfsffs'
+      expect(@user).to_not be_valid
     end
     
   end
